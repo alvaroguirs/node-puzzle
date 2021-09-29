@@ -40,3 +40,8 @@ describe '10-word-count', ->
   # !!!!!
   # Make the above tests pass and add more tests!
   # !!!!!
+
+  it 'should count separate camel case string in words', (done) ->
+    input = 'CamelCasePhraseSimplePhrase'
+    expected = words: 5, lines: 1
+    helper input, expected, done

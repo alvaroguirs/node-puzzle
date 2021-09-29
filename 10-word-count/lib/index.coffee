@@ -3,11 +3,18 @@ through2 = require 'through2'
 
 module.exports = ->
   words = 0
-  lines = 1
+  lines = 0
 
-  transform = (chunk, encoding, cb) ->
-    tokens = chunk.split(' ')
-    words = tokens.length
+  transform = (chunk, encoding, cb) -> 
+    
+    data = chunk.toString().split '\n'
+
+    for line in data when line
+      console.log line
+      line = line.replace /([a-z])([A-Z])/g, '$1 $2'
+      lines++      
+      tokens = line.split ///\s+(?=[^"]*(?:"[^"]*"[^"]*)*$)///
+      words += tokens.length    
     return cb()
 
   flush = (cb) ->
