@@ -10,7 +10,6 @@ module.exports = ->
     data = chunk.toString().split '\n'
 
     for line in data when line
-      console.log line
       line = line.replace /([a-z])([A-Z])/g, '$1 $2'
       lines++      
       tokens = line.split ///\s+(?=[^"]*(?:"[^"]*"[^"]*)*$)///
